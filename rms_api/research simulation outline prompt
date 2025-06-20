@@ -1,0 +1,66 @@
+ok so you helped me with a lot. I want to pause on coding for the time being and think about the broader project for a moment. 
+
+Ultimately, i am looking to build a tool that will allow my sales team to stand up demos faster. For RMS demos, we require demo research data in the system that helps bring to life the research workflow on the Bloomberg Platform, which includes the ability to have analytics on that research data. I am looking at this from the angle of a few themes: analyst productivity, analyst recommendation efficacy, analyst forecasting accuracy, analyst timing, research task management.
+
+So with creating these templates and populating them with data and then publishing into the system, we are able to capture research note meta data (when notes were published, who published them, securities tagged to them, custom tags like note type and investment theme, esg engagement data, etc) and custom data linked to securities and entities (recommendations, target prices, financial forecasts, idea stages, ratings, esg scores, etc). With that data, we can run analytics on the above themes.
+
+So with this project, we have created some templates and an orchestration agent to publish content into the system. The next phase of this project (although we are not yet finished with the first phase) is to dictate a narrative behind the research that is published. For example, being able to define analyst or research publishing archetypes that help tell a story and highlight the capabilities and insights the system can surface with data. 
+
+Considerations i have for archetypes include behavior and performance around the following categories:
+
+Estimate Accuracy - accurate, inaccurate, random, improving as you get closer to earnings announcement
+
+Estimate Timing - following consensus, leading consensus, random
+
+Time to progress an idea - fast to transition through idea stages, slow, medium, random; high number of passed ideas, low number of passed ideas; disproportionate concentration in stages
+
+Recommendation Tendencies: High buys, High Sells, Mixed
+
+Recommendation Consistency: Buys have positive performance, Buys have negative performance, sells have positive performance, sells have negative performance
+
+Sector-specific
+
+Market Cap-specific
+
+Region-specific
+
+Task Management - no stale ideas, some stale ideas, a lot of stale ideas
+
+Research volume - high volume of notes, medium volume, low volume
+
+Model Agreeableness - earnings revisions and target price revisions are in same direction vs opposite direction
+
+Consensus Deviation - high in-line with consensus, high disagree, distributed; accuracy when different high vs low
+
+There can be many more but you get the idea. To achieve this, i will need to be able to pull historical data. we have the benefit of knowing what happened, so we can construct analyst personas, making someone highly accurate with differentiated views and strong timing. or slow to progress ideas and seeing lots of missed opportunities and inaccurate estimates. Analysts who are independent of consensus or those who following consensus too closely and arent developing their own opinions. 
+
+So i can acquire the data i need to do this, but i will need to be able to determine the values of the custom data being published and when in time it is published to reflect these narratives, so we can highlight the system's ability to identify strengths and weakness of analysts. 
+
+Can you help me create an outline of what i need to do for this project and the approach i can take to create these archetypes? What should my data model be? How should i integrate with the template publishing workflow we are working on? what methods will i need to decide dates to update target prices and recommendations and models? What will a system need to be capable of progressing ideas through the idea lifecycle (New Idea > WIP > Active > Exit or New Idea > Pass or WIP > Pass)? What do i need to be able to know when to update this data to reflect different archetypes throughout time? What should i consider to keep track of analyst coverage and how much they have at a given time? What will be the best way to represent these archetypes and then translate methods that operate on behalf of them to create research behaviors, where the system can run and publish an entire history of research notes and data to reflect that demo analyst's persona? What else should i be thinking about?
+
+I do not want any code right now. i just want a blue print. that can be general requirements and stages to the project, how to achieve each stage, code structure, and anything else that makes sense when mapping out the end-to-end flow of a project like this.
+
+
+
+Ok i do agree with you in terms of the flow of implementation stages. Right now we have just recently created a company model template. 
+We still need to map it and integrate it into a publishing workflow that will also capture note meta data/tags and CDE data, as well as integrate some data injection handling. 
+We will get to this.
+
+Are there any other templates or content you think we should include as part of the template registry, now that you have a clear understanding of the project goals and the types of data we want to capture?
+If so, what would they be and what would we capture in each template? Can you share a rough outline of what would need to be built to support these additional templates? I dont want any code yet.
+
+So that will help me get a view of where we are in Phase 1. 
+But, i also want to start to think about the data model behind the market and fundamental data that will be used to drive the archetypes and narratives we want to create.
+How should i structure the market data, fundamental data, and event data? Do we just need the raw data and then we will have methods to interact with that data to calculate 
+things like future performance so we know when and what to publish for archetypes? Or do we need to pre-calculate some of this data and store it in a way that is easily accessible for the archetype narratives?
+Will this be a star model of fact and dimension tables for all the security data?
+Will we have data classes for this?
+Can you help me outline what this needs to look like? Again, no code yet.
+
+And then additionally, i want to think about the data structures we will use for defining analyst archetypes and profiles.
+Will we capture individual behaviors as their own classes that we can combiine into archetypes for the behavioral dimensions we outlined?
+Will those behaviors have inputs for things like timing and accuracy flexibility or will they be more standardized that will then dictate those outcomes?
+Will we also have an Analyst class? Will it be a base class that we can inhert for different archetypes?
+I dont want to focus too much on how we will integrate the determination of when and what to publish to realize these archetypes, 
+but instead i want to focus more on the requirements and components that will make up these archetypes from a data structure perspective.
+Can you help me outline this as well?

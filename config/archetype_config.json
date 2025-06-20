@@ -1,0 +1,19 @@
+{
+  "default_parameters": {
+    "accuracy_ranges": {
+      "high": [0.65, 0.85],
+      "medium": [0.45, 0.65],
+      "low": [0.25, 0.45]
+    },
+    "timing_ranges": {
+      "response_delay_days": [0, 3],
+      "publication_frequency": [0.5, 2.5]
+    }
+  },
+  "archetype_presets": {
+    "oracle": {
+      "enabled": true,
+      "parameter_overrides": {}
+    }
+  }
+}
