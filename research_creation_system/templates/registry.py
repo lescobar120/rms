@@ -6,12 +6,13 @@ from typing import Dict, Type, List
 from ..base.template_base import BaseTemplate
 from .thesis_template import ThesisTemplate
 from .light_update_template import LightUpdateTemplate
-
+from .company_model_template import CompanyModelTemplate
 
 
 TEMPLATE_REGISTRY: Dict[str, Type[BaseTemplate]] = {
     "thesis": ThesisTemplate,
     "light_update": LightUpdateTemplate,
+    "company_model": CompanyModelTemplate
     # Future templates can be added here
 }
 
